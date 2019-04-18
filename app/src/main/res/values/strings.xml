@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TrabalhoMobile</string>
+    <string name="ok">Ok</string>
+    <string name="erro">Erro!</string>
+    <string name="erro_salvando_foto">Erro ao salvar foto!</string>
+
+</resources>
