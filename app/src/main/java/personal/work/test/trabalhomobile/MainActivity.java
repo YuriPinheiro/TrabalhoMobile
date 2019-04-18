@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -97,26 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Bitmap resizeBitmap(Bitmap bm, int newWidth, int newHeight) {
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-
-        Matrix matrix = new Matrix();
-
-        matrix.postScale(scaleWidth, scaleHeight);
-
-
-        Bitmap resizedBitmap = Bitmap.createBitmap(
-                bm, 0, 0, width, height, matrix, false);
-        bm.recycle();
-        return resizedBitmap;
-    }
-
     public void joga(View view){
         ImageButton botao = (ImageButton) view;
         botao.setImageBitmap(jogador);
+        botao.setScaleType(ImageView.ScaleType.FIT_XY);
         if(jogador.equals(selfie1)){
             jogador = selfie2;
         }else{
@@ -129,15 +114,14 @@ public class MainActivity extends AppCompatActivity {
                 BitmapFactory.decodeFile(caminho);
 
 
-
-        //bitmap = resizeBitmap(bitmap,p1.getWidth(),p1.getHeight());
-
         if(id == CAMERA1){
             p1.setImageBitmap(bitmap);
+            p1.setScaleType(ImageView.ScaleType.FIT_XY);
             selfie1 = bitmap;
         }else
             if(id == CAMERA2) {
                 p2.setImageBitmap(bitmap);
+                p2.setScaleType(ImageView.ScaleType.FIT_XY);
                 selfie2 = bitmap;
             }
     }
