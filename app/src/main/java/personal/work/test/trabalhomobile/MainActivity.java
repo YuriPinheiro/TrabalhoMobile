@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btn9;
     private Bitmap selfie1 = null;
     private Bitmap selfie2 = null;
+    public String caminho1 = null;
+    public String caminho2 = null;
     private Bitmap jogador = null;
 
     @Override
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(selfie1 != null || selfie2 != null) {
             p1.setImageDrawable(null);
+
             selfie1 = null;
             p2.setImageDrawable(null);
             selfie2 = null;
@@ -122,14 +125,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void mostraVencedor(View view){
+    public void mostraVencedor(int vencedor){
 
 
-            Intent intent = new Intent(MainActivity.this, Vencedor.class);
-            Bundle b = new Bundle();
-            b.putParcelable("img",jogador);
+            Intent intent = new Intent(this, TelaVencedor.class);
+            if(vencedor == 1)
+                intent.putExtra("caminho",this.caminho1);
+            if(vencedor==2)
+                intent.putExtra("caminho",this.caminho2);
 
-            intent.putExtra("bundle",b);
             startActivity(intent);
 
     }
@@ -151,15 +155,19 @@ public class MainActivity extends AppCompatActivity {
                 BitmapFactory.decodeFile(caminho);
 
 
+
         if(id == CAMERA1){
+            p1.setScaleType(ImageView.ScaleType.FIT_XY);
             p1.setImageBitmap(bitmap);
             p1.setScaleType(ImageView.ScaleType.FIT_XY);
             selfie1 = bitmap;
+            caminho1 = caminho;
         }else
             if(id == CAMERA2) {
                 p2.setImageBitmap(bitmap);
                 p2.setScaleType(ImageView.ScaleType.FIT_XY);
                 selfie2 = bitmap;
+                caminho2 = caminho;
             }
     }
 

@@ -8,7 +8,7 @@
     android:baselineAligned="false"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/background"
+    android:background="@drawable/fund2"
     >
 
 
@@ -55,7 +55,7 @@
             android:id="@+id/btn5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:onClick="joga"
+            android:onClick="mostraVencedor"
             app:srcCompat="@android:drawable/ic_lock_lock" />
 
         <ImageButton
@@ -92,7 +92,7 @@
             android:layout_width="101dp"
             android:layout_height="102dp"
             android:onClick="tirarFoto"
-            android:src="@android:drawable/btn_star_big_on"
+            android:src="@drawable/p1"
             android:tag="btn_p1"
             tools:srcCompat="@drawable/p1" />
 
@@ -101,7 +101,7 @@
             android:layout_width="101dp"
             android:layout_height="102dp"
             android:onClick="tirarFoto"
-            android:src="@android:drawable/btn_star_big_on"
+            android:src="@drawable/p2"
             android:tag="btn_p2"
             tools:srcCompat="@drawable/p2" />
 
@@ -110,8 +110,7 @@
             android:layout_width="101dp"
             android:layout_height="102dp"
             android:onClick="clear"
-            android:src="@android:drawable/btn_dialog"
-            tools:src="@android:drawable/btn_dialog"
+            android:src="@drawable/clear"
             tools:srcCompat="@drawable/clear" />
 
         <LinearLayout
