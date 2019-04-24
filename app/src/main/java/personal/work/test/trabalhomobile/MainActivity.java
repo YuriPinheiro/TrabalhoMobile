@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private final int PERMISSAO_REQUEST = 2;
     private ImageButton p1;
     private ImageButton p2;
+    private ImageButton btn1;
+    private ImageButton btn2;
+    private ImageButton btn3;
+    private ImageButton btn4;
+    private ImageButton btn5;
+    private ImageButton btn6;
+    private ImageButton btn7;
+    private ImageButton btn8;
+    private ImageButton btn9;
     private Bitmap selfie1 = null;
     private Bitmap selfie2 = null;
     private Bitmap jogador = null;
@@ -47,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
 
         p1 = (ImageButton) findViewById(R.id.p1);
         p2 = (ImageButton) findViewById(R.id.p2);
+        btn1 = (ImageButton) findViewById(R.id.btn1);
+        btn2 = (ImageButton) findViewById(R.id.btn2);
+        btn3 = (ImageButton) findViewById(R.id.btn3);
+        btn4 = (ImageButton) findViewById(R.id.btn4);
+        btn5 = (ImageButton) findViewById(R.id.btn5);
+        btn6 = (ImageButton) findViewById(R.id.btn6);
+        btn7 = (ImageButton) findViewById(R.id.btn7);
+        btn8 = (ImageButton) findViewById(R.id.btn8);
+        btn9 = (ImageButton) findViewById(R.id.btn9);
+
 
         // Pede permissão para acessar as mídias gravadas no dispositivo
         if (ContextCompat.checkSelfPermission(this,
@@ -90,13 +110,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void clear(View view){
 
-        p1.setImageDrawable(null);
-        selfie1 = null;
-        p2.setImageDrawable(null);
-        selfie2 = null;
+        if(selfie1 != null || selfie2 != null) {
+            p1.setImageDrawable(null);
+            selfie1 = null;
+            p2.setImageDrawable(null);
+            selfie2 = null;
+
+
+        }
 
 
     }
+
+    public void mostraVencedor(View view){
+
+
+            Intent intent = new Intent(MainActivity.this, Vencedor.class);
+            Bundle b = new Bundle();
+            b.putParcelable("img",jogador);
+
+            intent.putExtra("bundle",b);
+            startActivity(intent);
+
+    }
+
 
     public void joga(View view){
         ImageButton botao = (ImageButton) view;
