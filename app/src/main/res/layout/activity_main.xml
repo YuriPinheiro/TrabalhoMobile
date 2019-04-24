@@ -28,64 +28,74 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"
+            />
 
         <ImageButton
             android:id="@+id/btn2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn4"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:onClick="mostraVencedor"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:onClick="joga"
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn6"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn7"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
+            android:scaleType="fitXY"
             android:tag="tag1"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn8"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/btn9"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joga"
-            app:srcCompat="@android:drawable/ic_lock_lock" />
+            android:scaleType="fitXY"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/p1"
@@ -93,6 +103,7 @@
             android:layout_height="102dp"
             android:onClick="tirarFoto"
             android:src="@drawable/p1"
+            android:scaleType="fitXY"
             android:tag="btn_p1"
             tools:srcCompat="@drawable/p1" />
 
@@ -103,6 +114,7 @@
             android:onClick="tirarFoto"
             android:src="@drawable/p2"
             android:tag="btn_p2"
+            android:scaleType="fitXY"
             tools:srcCompat="@drawable/p2" />
 
         <ImageButton
@@ -111,6 +123,7 @@
             android:layout_height="102dp"
             android:onClick="clear"
             android:src="@drawable/clear"
+            android:scaleType="fitXY"
             tools:srcCompat="@drawable/clear" />
 
         <LinearLayout

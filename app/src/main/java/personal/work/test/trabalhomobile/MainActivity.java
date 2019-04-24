@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -113,14 +114,22 @@ public class MainActivity extends AppCompatActivity {
     public void clear(View view){
 
         if(selfie1 != null || selfie2 != null) {
-            p1.setImageDrawable(null);
-
+            p1.setImageResource(R.drawable.p1);
             selfie1 = null;
-            p2.setImageDrawable(null);
+            p2.setImageResource(R.drawable.p2);
             selfie2 = null;
-
-
+            jogador = null;
         }
+
+        btn1.setImageDrawable(null);
+        btn2.setImageDrawable(null);
+        btn3.setImageDrawable(null);
+        btn4.setImageDrawable(null);
+        btn5.setImageDrawable(null);
+        btn6.setImageDrawable(null);
+        btn7.setImageDrawable(null);
+        btn8.setImageDrawable(null);
+        btn9.setImageDrawable(null);
 
 
     }
@@ -140,13 +149,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void joga(View view){
+
         ImageButton botao = (ImageButton) view;
-        botao.setImageBitmap(jogador);
-        botao.setScaleType(ImageView.ScaleType.FIT_XY);
-        if(jogador.equals(selfie1)){
-            jogador = selfie2;
-        }else{
-            jogador = selfie1;
+        if(jogador!=null) {
+            botao.setImageBitmap(jogador);
+            botao.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+            if (jogador.equals(selfie1)) {
+                jogador = selfie2;
+            } else {
+                jogador = selfie1;
+            }
         }
     }
 
