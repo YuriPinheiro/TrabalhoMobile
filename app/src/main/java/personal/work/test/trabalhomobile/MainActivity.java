@@ -146,12 +146,23 @@ public class MainActivity extends AppCompatActivity {
 
 
             Intent intent = new Intent(this, TelaVencedor.class);
-            if(vencedor == 1)
-                intent.putExtra("caminho",this.caminho1);
-            if(vencedor==2)
-                intent.putExtra("caminho",this.caminho2);
 
-            startActivity(intent);
+            if(vencedor == 1) {
+                intent.putExtra("caminho", this.caminho1);
+                intent.putExtra("resultado", "J1");
+                startActivity(intent);
+            }
+            if(vencedor==2) {
+                intent.putExtra("caminho", this.caminho2);
+                intent.putExtra("resultado","J2");
+                startActivity(intent);
+            }else {
+                intent.putExtra("resultado","Empate");
+                startActivity(intent);
+            }
+
+
+
 
     }
 
@@ -174,18 +185,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(vencedor==10){
-            mostraMsg("Empate");
+            mostraMsg("empatou");
+            mostraVencedor(3);
             clearTabuleiro();
             tabuleiro = new Jogo();
         }else
             if(vencedor==5){
-                mostraMsg("P1 Venceu");
+                mostraMsg(caminho1);
                 mostraVencedor(1);
                 clearTabuleiro();
                 tabuleiro = new Jogo();
             }else
                 if(vencedor==1){
-                    mostraMsg("P2 Venceu");
+                    mostraMsg("p2 venceu");
                     mostraVencedor(2);
                     clearTabuleiro();
                     tabuleiro = new Jogo();
@@ -199,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(id == CAMERA1){
-            p1.setScaleType(ImageView.ScaleType.FIT_XY);
             p1.setImageBitmap(bitmap);
             p1.setScaleType(ImageView.ScaleType.FIT_XY);
             selfie1 = bitmap;

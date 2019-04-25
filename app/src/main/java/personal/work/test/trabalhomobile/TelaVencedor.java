@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class TelaVencedor extends AppCompatActivity {
 
@@ -17,17 +18,32 @@ public class TelaVencedor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_vencedor);
         ImageView imagem = findViewById(R.id.imagem);
-
+        TextView txt = findViewById(R.id.txtVencedor);
+        TextView cabecalho = findViewById(R.id.txtVencedor2);
         Intent it = getIntent();
+
         String caminho = it.getStringExtra("caminho");
-        Bitmap bitmap =
-                BitmapFactory.decodeFile(caminho);
+        String resultado = it.getStringExtra("resultado");
 
-        imagem.setImageBitmap(bitmap);
 
+            Bitmap bitmap = BitmapFactory.decodeFile(caminho);
+            imagem.setImageBitmap(bitmap);
+
+
+        if(resultado.equals("J1")){
+            txt.setText("Jogador 1");
+        }else
+            if(resultado.equals("J2")) {
+                txt.setText("Jogador 2");
+            }
+        else{
+            txt.setText("Deu Velha!");
+            cabecalho.setText("");                                      //Com Else else o P1 da velha, sem esse Else o P1 e P2 funcionam normal
+            imagem.setImageResource(R.drawable.velha);
+        }
     }
 
     public void volta(View view){
-        this.onResume();
+        this.finish();
     }
 }
