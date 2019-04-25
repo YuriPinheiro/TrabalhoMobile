@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     public String caminho1 = null;
     public String caminho2 = null;
     private Bitmap jogador = null;
+    private Jogo tabuleiro = new Jogo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void empate(){
+    }
+
     public void clear(View view){
 
         if(selfie1 != null || selfie2 != null) {
@@ -120,19 +124,23 @@ public class MainActivity extends AppCompatActivity {
             selfie2 = null;
             jogador = null;
         }
+        clearTabuleiro();
 
-        btn1.setImageDrawable(null);
-        btn2.setImageDrawable(null);
-        btn3.setImageDrawable(null);
-        btn4.setImageDrawable(null);
-        btn5.setImageDrawable(null);
-        btn6.setImageDrawable(null);
-        btn7.setImageDrawable(null);
-        btn8.setImageDrawable(null);
-        btn9.setImageDrawable(null);
 
 
     }
+
+    public void clearTabuleiro(){
+            btn1.setImageDrawable(null);
+            btn2.setImageDrawable(null);
+            btn3.setImageDrawable(null);
+            btn4.setImageDrawable(null);
+            btn5.setImageDrawable(null);
+            btn6.setImageDrawable(null);
+            btn7.setImageDrawable(null);
+            btn8.setImageDrawable(null);
+            btn9.setImageDrawable(null);
+        }
 
     public void mostraVencedor(int vencedor){
 
@@ -151,10 +159,12 @@ public class MainActivity extends AppCompatActivity {
     public void joga(View view){
 
         ImageButton botao = (ImageButton) view;
+        int vencedor = 0;
+
         if(jogador!=null) {
             botao.setImageBitmap(jogador);
             botao.setScaleType(ImageView.ScaleType.FIT_XY);
-
+            vencedor = tabuleiro.jogar(botao.getTag().toString());
 
             if (jogador.equals(selfie1)) {
                 jogador = selfie2;
@@ -162,6 +172,24 @@ public class MainActivity extends AppCompatActivity {
                 jogador = selfie1;
             }
         }
+
+        if(vencedor==10){
+            mostraMsg("Empate");
+            clearTabuleiro();
+            tabuleiro = new Jogo();
+        }else
+            if(vencedor==5){
+                mostraMsg("P1 Venceu");
+                mostraVencedor(1);
+                clearTabuleiro();
+                tabuleiro = new Jogo();
+            }else
+                if(vencedor==1){
+                    mostraMsg("P2 Venceu");
+                    mostraVencedor(2);
+                    clearTabuleiro();
+                    tabuleiro = new Jogo();
+                }
     }
 
     private void setPhoto(String caminho, int id) {
@@ -191,10 +219,12 @@ public class MainActivity extends AppCompatActivity {
         if(selfie1 != null && selfie2 != null){
             if(tag.equals("btn_p1")) {
                 jogador = selfie1;
+                tabuleiro.setJogador("J1");
                 mostraMsg("Jogador 1 começa!");
             }
             else {
                 jogador = selfie2;
+                tabuleiro.setJogador("J2");
                 mostraMsg("Jogador 2 começa!");
 
             }

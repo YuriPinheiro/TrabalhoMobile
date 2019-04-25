@@ -27,10 +27,10 @@
             android:id="@+id/btn1"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@null"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"
-            />
+            android:tag="0_0" />
 
         <ImageButton
             android:id="@+id/btn2"
@@ -38,7 +38,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="0_1"/>
 
         <ImageButton
             android:id="@+id/btn3"
@@ -46,7 +47,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="0_2"/>
 
         <ImageButton
             android:id="@+id/btn4"
@@ -54,7 +56,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="1_0"/>
 
         <ImageButton
             android:id="@+id/btn5"
@@ -62,7 +65,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="1_1"/>
 
         <ImageButton
             android:id="@+id/btn6"
@@ -70,7 +74,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="1_2"/>
 
         <ImageButton
             android:id="@+id/btn7"
@@ -78,8 +83,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:tag="tag1"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="2_0"/>
 
         <ImageButton
             android:id="@+id/btn8"
@@ -87,7 +92,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="2_1"/>
 
         <ImageButton
             android:id="@+id/btn9"
@@ -95,7 +101,8 @@
             android:layout_height="100dp"
             android:onClick="joga"
             android:scaleType="fitXY"
-            android:background="@null"/>
+            android:background="@null"
+            android:tag="2_2"/>
 
         <ImageButton
             android:id="@+id/p1"
