@@ -3,4 +3,5 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FF0000</color>
+    <color name="vitoria">#00FFE1</color>
 </resources>

@@ -33,11 +33,11 @@ public class TelaVencedor extends AppCompatActivity {
         Log.d("resultado",resultado);
         if(resultado.equals("J1")){
             txt.setText("Jogador 1");
-        }else
-            if(resultado.equals("J2")) {
-                txt.setText("Jogador 2");
-            }
-        else{
+        }
+        if(resultado.equals("J2")) {
+            txt.setText("Jogador 2");
+        }
+        if(resultado.equals("Empate")){
             txt.setText("Deu Velha!");
             cabecalho.setText("");                                      //Com Else else o P1 da velha, sem esse Else o P1 e P2 funcionam normal
             imagem.setImageResource(R.drawable.velha);

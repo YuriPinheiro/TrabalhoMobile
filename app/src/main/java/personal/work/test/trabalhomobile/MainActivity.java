@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -164,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void joga(View view){
+    public void joga(View view) throws InterruptedException {
 
         ImageButton botao = (ImageButton) view;
         int vencedor = 0;
@@ -188,13 +191,13 @@ public class MainActivity extends AppCompatActivity {
             tabuleiro = new Jogo();
         }else
             if(vencedor==5){
-                mostraMsg(caminho1);
+                destaca(tabuleiro.getLabel());
                 mostraVencedor(1);
                 clearTabuleiro();
                 tabuleiro = new Jogo();
             }else
                 if(vencedor==1){
-                    mostraMsg("p2 venceu");
+                    mostraMsg(tabuleiro.getLabel());
                     mostraVencedor(2);
                     clearTabuleiro();
                     tabuleiro = new Jogo();
@@ -219,6 +222,19 @@ public class MainActivity extends AppCompatActivity {
                 selfie2 = bitmap;
                 caminho2 = caminho;
             }
+    }
+
+    public void destaca(String coord) throws InterruptedException {
+        Canvas c = new Canvas();
+        Paint p = new Paint();
+        p.setColor(Color.parseColor("#FFFF0000"));
+
+        if(coord.equals("Linha 1")){
+            mostraMsg("Deveria pintar");
+            //c.drawRect(btn1.getLeft(),btn1.getTop(),btn3.getRight(),btn3.getBottom(),p);
+            //c.drawLine(btn1.getX(),btn1.getY(),btn3.getX(),btn3.getY(),p);
+            //new Thread().sleep(5000);
+        }
     }
 
 
