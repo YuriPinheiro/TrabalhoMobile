@@ -103,11 +103,11 @@ public class Jogo {
             if(soma != 0){
                 if(soma==15){
                     this.campeao = J1;
-                    this.label = "Linha " + valueOf(i+1);
+                    this.label = "Linha " + valueOf(i);
                     break;
                 }else if(soma==3){
                     this.campeao = J2;
-                    this.label = "Linha " + valueOf(i+1);
+                    this.label = "Linha " + valueOf(i);
                     break;
                 }
             }
@@ -125,11 +125,11 @@ public class Jogo {
             Log.d("vcsoma",Integer.toString(soma));
             if(soma!=0){
                 if(soma==15){
-                    this.label = "Coluna " + valueOf(j+1);
+                    this.label = "Coluna " + valueOf(j);
                     this.campeao = J1;
                     break;
                 }else if(soma==3){
-                    this.label = "Coluna " + valueOf(j+1);
+                    this.label = "Coluna " + valueOf(j);
                     this.campeao = J2;
                     break;
                 }
@@ -144,19 +144,19 @@ public class Jogo {
         Log.d("diagonalp",Integer.toString(diagonal));
         if(diagonal!=0){
             if(diagonal==15){
-                this.label = "Diagonal Principal";
+                this.label = "Diagonal_Principal";
                 this.campeao = J1;
             }else if(diagonal==3){
-                this.label = "Diagonal Principal";
+                this.label = "Diagonal_Principal";
                 this.campeao = J2;
             }else{
                 diagonal = tabuleiro[2][0] + tabuleiro[1][1] + tabuleiro[0][2];
                 Log.d("diagonals",Integer.toString(diagonal));
                 if(diagonal==15){
-                    this.label = "Diagonal Secundaria";
+                    this.label = "Diagonal_Secundaria";
                     this.campeao = J1;
                 }else if(diagonal==3){
-                    this.label = "Diagonal Secundaria";
+                    this.label = "Diagonal_Secundaria";
                     this.campeao = J2;
                 }
             }

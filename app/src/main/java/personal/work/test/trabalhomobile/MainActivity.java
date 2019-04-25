@@ -21,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -143,28 +144,66 @@ public class MainActivity extends AppCompatActivity {
             btn9.setImageDrawable(null);
         }
 
-        public void getByTag(String tag){
-
+        public ImageButton getByTag(String tag){
+            View v = findViewById(getResources().getIdentifier("GridLayout1", "id", getPackageName()));
+            return (ImageButton) v.findViewWithTag(tag);
         }
 
         public void changeColor(){
             String[] arr = tabuleiro.getLabel().split(" ");
-            if(arr[0]=="Coluna"){
-                int coluna = Integer.parseInt(arr[1])-1;
-                for (int i = 0 ; i<3;i++){
+            if(arr[0]=="Diagonal_Principal"){
 
+                ImageButton b = getByTag("0_0");
+                Log.d("color",b.toString());
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_1");
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("2_2");
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+            }else if(arr[0]=="Diagonal_Secundaria"){
+                ImageButton b = getByTag("2_0");
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_1");
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("0_2");
+                b.setImageDrawable(null);
+                b.setBackgroundColor(Color.RED);
+            } else if(arr[0]=="Coluna"){
+                int coluna = Integer.parseInt(arr[1]);
+                for (int i = 0 ; i<3;i++){
+                    String tag = Integer.toString(i) + "_" + Integer.toString(coluna);
+                    Log.d("tag",tag);
+                    ImageButton b = this.getByTag(tag);
+                    b.setImageDrawable(null);
+                    b.setBackgroundColor(Color.RED);
+                }
+            }else if (arr[0]=="Linha"){
+                int linha = Integer.parseInt(arr[1]);
+                for (int i = 0 ; i<3;i++){
+                    String tag = Integer.toString(linha-1) + "_" + Integer.toString(i);
+                    Log.d("tag",tag);
+                    ImageButton b = this.getByTag(tag);
+                    b.setImageDrawable(null);
+                    b.setBackgroundColor(Color.RED);
                 }
             }
         }
 
         public void mostra(final int vencedor){
+        Log.d("mostra","entrei");
+        changeColor();
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                           mostraVencedor(vencedor);
                         }
                     },
-                    300);
+                    3000);
         }
 
         public void mostraVencedor(int vencedor){
@@ -210,19 +249,19 @@ public class MainActivity extends AppCompatActivity {
 
         if(vencedor==10){
             mostraMsg("empatou");
-            mostraVencedor(3);
+            mostra(3);
             clearTabuleiro();
             tabuleiro = new Jogo();
         }else
             if(vencedor==5){
                 destaca(tabuleiro.getLabel());
-                mostraVencedor(1);
+                mostra(1);
                 clearTabuleiro();
                 tabuleiro = new Jogo();
             }else
                 if(vencedor==1){
                     mostraMsg(tabuleiro.getLabel());
-                    mostraVencedor(2);
+                    mostra(2);
                     clearTabuleiro();
                     tabuleiro = new Jogo();
                 }
