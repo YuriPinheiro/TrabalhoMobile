@@ -143,7 +143,31 @@ public class MainActivity extends AppCompatActivity {
             btn9.setImageDrawable(null);
         }
 
-    public void mostraVencedor(int vencedor){
+        public void getByTag(String tag){
+
+        }
+
+        public void changeColor(){
+            String[] arr = tabuleiro.getLabel().split(" ");
+            if(arr[0]=="Coluna"){
+                int coluna = Integer.parseInt(arr[1])-1;
+                for (int i = 0 ; i<3;i++){
+
+                }
+            }
+        }
+
+        public void mostra(final int vencedor){
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                          mostraVencedor(vencedor);
+                        }
+                    },
+                    300);
+        }
+
+        public void mostraVencedor(int vencedor){
 
 
             Intent intent = new Intent(this, TelaVencedor.class);
