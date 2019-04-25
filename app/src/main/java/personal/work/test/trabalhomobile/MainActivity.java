@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -66,14 +67,31 @@ public class MainActivity extends AppCompatActivity {
         p1 = (ImageButton) findViewById(R.id.p1);
         p2 = (ImageButton) findViewById(R.id.p2);
         btn1 = (ImageButton) findViewById(R.id.btn1);
+        btn1.setPadding(5,5,5,5);
         btn2 = (ImageButton) findViewById(R.id.btn2);
+        btn2.setPadding(5,5,5,5);
+
         btn3 = (ImageButton) findViewById(R.id.btn3);
+        btn3.setPadding(5,5,5,5);
+
         btn4 = (ImageButton) findViewById(R.id.btn4);
+        btn4.setPadding(5,5,5,5);
+
         btn5 = (ImageButton) findViewById(R.id.btn5);
+        btn5.setPadding(5,5,5,5);
+
         btn6 = (ImageButton) findViewById(R.id.btn6);
+        btn6.setPadding(5,5,5,5);
+
         btn7 = (ImageButton) findViewById(R.id.btn7);
+        btn7.setPadding(5,5,5,5);
+
         btn8 = (ImageButton) findViewById(R.id.btn8);
+        btn8.setPadding(5,5,5,5);
+
         btn9 = (ImageButton) findViewById(R.id.btn9);
+        btn9.setPadding(5,5,5,5);
+
 
 
         // Pede permissão para acessar as mídias gravadas no dispositivo
@@ -116,8 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void empate(){
-    }
+
 
     public void clear(View view){
 
@@ -133,15 +150,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clearTabuleiro(){
-            btn1.setImageDrawable(null);
-            btn2.setImageDrawable(null);
-            btn3.setImageDrawable(null);
-            btn4.setImageDrawable(null);
-            btn5.setImageDrawable(null);
-            btn6.setImageDrawable(null);
-            btn7.setImageDrawable(null);
-            btn8.setImageDrawable(null);
-            btn9.setImageDrawable(null);
+        btn1.setImageDrawable(null);
+        btn2.setImageDrawable(null);
+        btn3.setImageDrawable(null);
+        btn4.setImageDrawable(null);
+        btn5.setImageDrawable(null);
+        btn6.setImageDrawable(null);
+        btn7.setImageDrawable(null);
+        btn8.setImageDrawable(null);
+        btn9.setImageDrawable(null);
         btn1.setBackgroundColor(android.R.drawable.btn_default);
         btn2.setBackgroundColor(android.R.drawable.btn_default);
         btn3.setBackgroundColor(android.R.drawable.btn_default);
@@ -151,155 +168,160 @@ public class MainActivity extends AppCompatActivity {
         btn7.setBackgroundColor(android.R.drawable.btn_default);
         btn8.setBackgroundColor(android.R.drawable.btn_default);
         btn9.setBackgroundColor(android.R.drawable.btn_default);
-        }
+        jogador = null;
+    }
 
-        public ImageButton getByTag(String tag){
-            View v = findViewById(getResources().getIdentifier("GridLayout1", "id", getPackageName()));
-            return (ImageButton) v.findViewWithTag(tag);
-        }
+    public ImageButton getByTag(String tag){
+        View v = findViewById(getResources().getIdentifier("GridLayout1", "id", getPackageName()));
+        return (ImageButton) v.findViewWithTag(tag);
+    }
 
-        public void changeColor(){
-            String[] arr = tabuleiro.getLabel().split(" ");
+    public void changeColor(){
+        String[] arr = tabuleiro.getLabel().split(" ");
 
-            if(arr[0].equals("Diagonal_Principal")){
+        if(arr[0].equals("Diagonal_Principal")){
 
+            ImageButton b = getByTag("0_0");
+            Log.d("color",b.toString());
+
+            b.setPadding(5,5,5,5);
+            b.setBackgroundColor(Color.RED);
+            b = getByTag("1_1");
+            b.setPadding(5,5,5,5);
+            b.setBackgroundColor(Color.RED);
+            b = getByTag("2_2");
+            b.setPadding(5,5,5,5);
+            b.setBackgroundColor(Color.RED);
+        }else if(arr[0].equals("Diagonal_Secundaria")){
+            ImageButton b = getByTag("2_0");
+            b.setPadding(5,5,5,5);
+            b.setBackgroundColor(Color.RED);
+            b = getByTag("1_1");
+
+            b.setBackgroundColor(Color.RED);
+            b = getByTag("0_2");
+
+            b.setBackgroundColor(Color.RED);
+        } else if(arr[0].equals("Coluna")){
+            Log.d("coluna",arr[1]);
+            int coluna = Integer.parseInt(arr[1]);
+            if(coluna == 0){
                 ImageButton b = getByTag("0_0");
-                Log.d("color",b.toString());
-                b.setImageDrawable(null);
+                b.setPadding(5,5,5,5);
+                //
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_0");
+                b.setPadding(5,5,5,5);
+                //
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("2_0");
+                b.setPadding(5,5,5,5);
+                //
+                b.setBackgroundColor(Color.RED);
+            }else if (coluna == 1){
+                ImageButton b = getByTag("0_1");
+
                 b.setBackgroundColor(Color.RED);
                 b = getByTag("1_1");
-                b.setImageDrawable(null);
+
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("2_1");
+
+                b.setBackgroundColor(Color.RED);
+            }else if(coluna == 2){
+                ImageButton b = getByTag("0_2");
+
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_2");
+
                 b.setBackgroundColor(Color.RED);
                 b = getByTag("2_2");
-                b.setImageDrawable(null);
+
                 b.setBackgroundColor(Color.RED);
-            }else if(arr[0].equals("Diagonal_Secundaria")){
-                ImageButton b = getByTag("2_0");
-                b.setImageDrawable(null);
+            }
+
+            //for (int i = 0 ; i<3;i++){
+            //   String tag = Integer.toString(i) + "_" + Integer.toString(coluna);
+            //    Log.d("tag",tag);
+            //    ImageButton b = this.getByTag(tag);
+            //
+            //    b.setBackgroundColor(Color.RED);
+            //}
+        }else if (arr[0].equals("Linha")){
+
+            Log.d("linha",arr[1]);
+            int linha = Integer.parseInt(arr[1]);
+            if(linha == 0){
+                ImageButton b = getByTag("0_0");
+
                 b.setBackgroundColor(Color.RED);
-                b = getByTag("1_1");
-                b.setImageDrawable(null);
+                b = getByTag("0_1");
+
                 b.setBackgroundColor(Color.RED);
                 b = getByTag("0_2");
-                b.setImageDrawable(null);
+
                 b.setBackgroundColor(Color.RED);
-            } else if(arr[0].equals("Coluna")){
-                Log.d("coluna",arr[1]);
-                int coluna = Integer.parseInt(arr[1]);
-                if(coluna == 0){
-                    ImageButton b = getByTag("0_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("1_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("2_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }else if (coluna == 1){
-                    ImageButton b = getByTag("0_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("1_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("2_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }else if(coluna == 2){
-                    ImageButton b = getByTag("0_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("1_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("2_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }
+            }else if (linha == 1){
+                ImageButton b = getByTag("1_0");
 
-                //for (int i = 0 ; i<3;i++){
-                //   String tag = Integer.toString(i) + "_" + Integer.toString(coluna);
-                //    Log.d("tag",tag);
-                //    ImageButton b = this.getByTag(tag);
-                //   b.setImageDrawable(null);
-                //    b.setBackgroundColor(Color.RED);
-                //}
-            }else if (arr[0].equals("Linha")){
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_1");
 
-                Log.d("linha",arr[1]);
-                int linha = Integer.parseInt(arr[1]);
-                if(linha == 0){
-                    ImageButton b = getByTag("0_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("0_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("0_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }else if (linha == 1){
-                    ImageButton b = getByTag("1_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("1_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("1_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }else if(linha == 2){
-                    ImageButton b = getByTag("2_0");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("2_1");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                    b = getByTag("2_2");
-                    b.setImageDrawable(null);
-                    b.setBackgroundColor(Color.RED);
-                }
-                //for (int i = 0 ; i<3;i++){
-                //    String tag = Integer.toString(linha-1) + "_" + Integer.toString(i);
-                //    Log.d("tag",tag);
-                //    ImageButton b = this.getByTag(tag);
-                //    b.setImageDrawable(null);
-                //    b.setBackgroundColor(Color.RED);
-                //}
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("1_2");
+
+                b.setBackgroundColor(Color.RED);
+            }else if(linha == 2){
+                ImageButton b = getByTag("2_0");
+
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("2_1");
+
+                b.setBackgroundColor(Color.RED);
+                b = getByTag("2_2");
+
+                b.setBackgroundColor(Color.RED);
             }
+            //for (int i = 0 ; i<3;i++){
+            //    String tag = Integer.toString(linha-1) + "_" + Integer.toString(i);
+            //    Log.d("tag",tag);
+            //    ImageButton b = this.getByTag(tag);
+            //
+            //    b.setBackgroundColor(Color.RED);
+            //}
         }
+    }
 
-        public void mostra(final int vencedor){
+    public void mostra(final int vencedor){
         Log.d("mostra","entrei");
         changeColor();
-            new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            clearTabuleiro();
-                            mostraVencedor(vencedor);
-                        }
-                    },
-                    3000);
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        clearTabuleiro();
+                        mostraVencedor(vencedor);
+                    }
+                },
+                3000);
+    }
+
+    public void mostraVencedor(int vencedor){
+
+
+        Intent intent = new Intent(this, TelaVencedor.class);
+
+        if(vencedor == 1) {
+            intent.putExtra("caminho", this.caminho1);
+            intent.putExtra("resultado", "J1");
+            startActivity(intent);
+        }else if(vencedor==2) {
+            intent.putExtra("caminho", this.caminho2);
+            intent.putExtra("resultado","J2");
+            startActivity(intent);
+        }else {
+            intent.putExtra("resultado","Empate");
+            startActivity(intent);
         }
-
-        public void mostraVencedor(int vencedor){
-
-
-            Intent intent = new Intent(this, TelaVencedor.class);
-
-            if(vencedor == 1) {
-                intent.putExtra("caminho", this.caminho1);
-                intent.putExtra("resultado", "J1");
-                startActivity(intent);
-            }else if(vencedor==2) {
-                intent.putExtra("caminho", this.caminho2);
-                intent.putExtra("resultado","J2");
-                startActivity(intent);
-            }else {
-                intent.putExtra("resultado","Empate");
-                startActivity(intent);
-            }
 
 
 
@@ -329,15 +351,14 @@ public class MainActivity extends AppCompatActivity {
             mostra(3);
             tabuleiro = new Jogo();
         }else
-            if(vencedor==5){
-                destaca(tabuleiro.getLabel());
-                mostra(1);
-                tabuleiro = new Jogo();
-            }else
-                if(vencedor==1){
-                    mostra(2);
-                    tabuleiro = new Jogo();
-                }
+        if(vencedor==5){
+            mostra(1);
+            tabuleiro = new Jogo();
+        }else
+        if(vencedor==1){
+            mostra(2);
+            tabuleiro = new Jogo();
+        }
     }
 
     private void setPhoto(String caminho, int id) {
@@ -352,24 +373,11 @@ public class MainActivity extends AppCompatActivity {
             selfie1 = bitmap;
             caminho1 = caminho;
         }else
-            if(id == CAMERA2) {
-                p2.setImageBitmap(bitmap);
-                p2.setScaleType(ImageView.ScaleType.FIT_XY);
-                selfie2 = bitmap;
-                caminho2 = caminho;
-            }
-    }
-
-    public void destaca(String coord) throws InterruptedException {
-        Canvas c = new Canvas();
-        Paint p = new Paint();
-        p.setColor(Color.parseColor("#FFFF0000"));
-
-        if(coord.equals("Linha 1")){
-            mostraMsg("Deveria pintar");
-            //c.drawRect(btn1.getLeft(),btn1.getTop(),btn3.getRight(),btn3.getBottom(),p);
-            //c.drawLine(btn1.getX(),btn1.getY(),btn3.getX(),btn3.getY(),p);
-            //new Thread().sleep(5000);
+        if(id == CAMERA2) {
+            p2.setImageBitmap(bitmap);
+            p2.setScaleType(ImageView.ScaleType.FIT_XY);
+            selfie2 = bitmap;
+            caminho2 = caminho;
         }
     }
 

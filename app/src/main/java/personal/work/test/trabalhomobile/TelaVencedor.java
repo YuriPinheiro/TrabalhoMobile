@@ -3,6 +3,7 @@ package personal.work.test.trabalhomobile;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,15 +34,22 @@ public class TelaVencedor extends AppCompatActivity {
         Log.d("resultado",resultado);
         if(resultado.equals("J1")){
             txt.setText("Jogador 1");
+            playSound();
         }
         if(resultado.equals("J2")) {
             txt.setText("Jogador 2");
+            playSound();
         }
         if(resultado.equals("Empate")){
             txt.setText("Deu Velha!");
             cabecalho.setText("");                                      //Com Else else o P1 da velha, sem esse Else o P1 e P2 funcionam normal
             imagem.setImageResource(R.drawable.velha);
         }
+    }
+
+    private void playSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.win);
+        mediaPlayer.start();
     }
 
     public void volta(View view){
