@@ -4,6 +4,7 @@ import android.util.Log;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Integer.toUnsignedString;
+import static java.lang.Integer.valueOf;
 
 public class Jogo {
     private static final int J1 = 5;
@@ -12,6 +13,7 @@ public class Jogo {
     private int campeao = 0;
     private int tabuleiro[][] = new int[3][3];
     private int njogadas = 0;
+    private String  label = "";
 
     public Jogo(){
         zeraTabuleiro();
@@ -34,6 +36,18 @@ public class Jogo {
         }else if(j.equals("J2")){
             this.atual = J2;
         }
+    }
+
+    public void clear (){
+        zeraTabuleiro();
+        this.atual = 0;
+        this.campeao = 0;
+        this.njogadas = 0;
+        this.label = "";
+    }
+
+    public String getLabel(){
+        return this.label;
     }
 
     private void setPosition(String v){
@@ -89,9 +103,11 @@ public class Jogo {
             if(soma != 0){
                 if(soma==15){
                     this.campeao = J1;
+                    this.label = "Linha " + valueOf(i);
                     break;
                 }else if(soma==3){
                     this.campeao = J2;
+                    this.label = "Linha " + valueOf(i);
                     break;
                 }
             }
@@ -102,16 +118,18 @@ public class Jogo {
 
     private void verificaColuna(){
         int soma = 0;
-        for(int i = 0;i<3;i++){
-            for(int j = 0;j<3;j++){
-                soma = soma + tabuleiro[j][i] ;
+        for(int j = 0;j<3;j++){
+            for(int i = 0;i<3;i++){
+                soma = soma + tabuleiro[i][j] ;
             }
             Log.d("vcsoma",Integer.toString(soma));
             if(soma!=0){
                 if(soma==15){
+                    this.label = "Coluna " + valueOf(j);
                     this.campeao = J1;
                     break;
                 }else if(soma==3){
+                    this.label = "Coluna " + valueOf(j);
                     this.campeao = J2;
                     break;
                 }
@@ -126,15 +144,19 @@ public class Jogo {
         Log.d("diagonalp",Integer.toString(diagonal));
         if(diagonal!=0){
             if(diagonal==15){
+                this.label = "Diagonal Principal";
                 this.campeao = J1;
             }else if(diagonal==3){
+                this.label = "Diagonal Principal";
                 this.campeao = J2;
             }else{
                 diagonal = tabuleiro[2][0] + tabuleiro[1][1] + tabuleiro[0][2];
                 Log.d("diagonals",Integer.toString(diagonal));
                 if(diagonal==15){
+                    this.label = "Diagonal Secundaria";
                     this.campeao = J1;
                 }else if(diagonal==3){
+                    this.label = "Diagonal Secundaria";
                     this.campeao = J2;
                 }
             }

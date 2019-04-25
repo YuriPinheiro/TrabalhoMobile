@@ -125,9 +125,7 @@ public class MainActivity extends AppCompatActivity {
             jogador = null;
         }
         clearTabuleiro();
-
-
-
+        tabuleiro.clear();
     }
 
     public void clearTabuleiro(){
@@ -151,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("caminho", this.caminho1);
                 intent.putExtra("resultado", "J1");
                 startActivity(intent);
-            }
-            if(vencedor==2) {
+            }else if(vencedor==2) {
                 intent.putExtra("caminho", this.caminho2);
                 intent.putExtra("resultado","J2");
                 startActivity(intent);
