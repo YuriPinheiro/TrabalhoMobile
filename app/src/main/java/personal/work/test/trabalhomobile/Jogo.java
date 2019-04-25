@@ -103,11 +103,11 @@ public class Jogo {
             if(soma != 0){
                 if(soma==15){
                     this.campeao = J1;
-                    this.label = "Linha " + valueOf(i);
+                    this.label = "Linha " + valueOf(i+1);
                     break;
                 }else if(soma==3){
                     this.campeao = J2;
-                    this.label = "Linha " + valueOf(i);
+                    this.label = "Linha " + valueOf(i+1);
                     break;
                 }
             }
@@ -125,11 +125,11 @@ public class Jogo {
             Log.d("vcsoma",Integer.toString(soma));
             if(soma!=0){
                 if(soma==15){
-                    this.label = "Coluna " + valueOf(j);
+                    this.label = "Coluna " + valueOf(j+1);
                     this.campeao = J1;
                     break;
                 }else if(soma==3){
-                    this.label = "Coluna " + valueOf(j);
+                    this.label = "Coluna " + valueOf(j+1);
                     this.campeao = J2;
                     break;
                 }
